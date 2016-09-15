@@ -1,0 +1,16 @@
+[user]
+	name = gaga5lala
+	email = gaga5lala1013@gmail.com
+[core]
+        editor = /usr/bin/vim
+	excludesfile = /Users/gaga/.gitignore
+[color]
+        ui = auto
+[alias]
+        br = branch
+        ci = commit
+        hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+        st = status
+        co = checkout
+        sl = log --pretty=oneline --abbrev-commit
+        lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit

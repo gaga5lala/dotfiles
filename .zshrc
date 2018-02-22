@@ -2,6 +2,12 @@
 export ZSH=$HOME/.oh-my-zsh
 export GOPATH=/Users/gaga/ikala/go
 
+# Python environment setting(pyenv)
+PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+
 # if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 #path=(/usr/local/share/zsh-completions $fpath)
@@ -55,12 +61,14 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git bundler)
+plugins=(git bundler zsh-autosuggestions zsh-syntax-highlighting)
 
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
+
+export QUANDL_API_KEY=F64wsZU5zHaLyxnz5yyJ
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,6 +103,11 @@ alias grepsrc='grep -rn'
 alias greprb='grep -rn --include=\*.rb'
 alias tmux='tmux -2'
 
+# gcloud alias
+alias gcs='gcloud compute ssh'
+alias gca='gcloud config configurations activate'
+alias gcp='gcloud compute copy-files'
+
 # Setting for autojump
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh  ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
@@ -106,3 +119,14 @@ source '/Users/gaga/Desktop/google-cloud-sdk/path.zsh.inc'
 
 # The next line enables shell command completion for gcloud.
 source '/Users/gaga/Desktop/google-cloud-sdk/completion.zsh.inc'
+alias geth159='/Users/gaga/github/rostin-coin/go-ethereum-1.5.9/build/bin/geth'
+
+prompt_context() {
+  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+  fi
+}
+
+
+# added by travis gem
+[ -f /Users/gaga/.travis/travis.sh ] && source /Users/gaga/.travis/travis.sh

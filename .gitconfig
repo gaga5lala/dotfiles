@@ -3,7 +3,8 @@
 	email = gaga5lala1013@gmail.com
 [core]
         editor = /usr/bin/vim
-	excludesfile = /Users/gaga/.gitignore
+        excludesfile = /Users/gaga/.gitignore
+        quotepath = false
 [color]
         ui = auto
 [alias]
@@ -12,5 +13,11 @@
         hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
         st = status
         co = checkout
+        sh = show --pretty="" --name-only
         sl = log --pretty=oneline --abbrev-commit
         lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

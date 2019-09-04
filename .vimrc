@@ -12,40 +12,25 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-"Plugin 'user/L9', {'name': 'newL9'}
-"
-Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 
+Plugin 'tpope/vim-fugitive'
+Plugin 'git://git.wincent.com/command-t.git'
+
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'altercation/solarized'
 
 " rails related plugin
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'slim-template/vim-slim.git'
 Plugin 'thoughtbot/vim-rspec'
-Plugin 'tpope/vim-endwise'
 
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'tpope/vim-surround'
-
 Plugin 'kien/ctrlp.vim'
-Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-endwise'
 
+Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
 Plugin 'Lokaltog/vim-powerline'
 
@@ -75,18 +60,23 @@ filetype plugin indent on    " required
 "// --- general setting ---//
 syntax enable
 
+set enc=utf8
+
 set softtabstop=2
 set shiftwidth=2
 set expandtab
 set autoindent
-set cursorline " 顯示游標所在位置
+" :set cursorline " 顯示游標所在位置
 set cursorcolumn " 顯示游標所在位置
 set hlsearch                          " search highlighting
 set incsearch                         " incremental search
 set ignorecase " 搜尋時忽略大小寫
-" set relativenumber
-" set scrolloff=999 " keep cursor at center when page up/down
-"
+set number relativenumber
+
+" http://cenalulu.github.io/linux/why-my-backspace-not-work-in-vim/
+set backspace=2
+" system clipboard
+set clipboard=unnamed
 
 "set background=dark
 colorscheme Tomorrow-Night
@@ -94,24 +84,16 @@ colorscheme Tomorrow-Night
 set t_Co=256
 
 filetype plugin indent on
-" set number
-" function! NumberToggle()
-"   if(&relativenumber == 1)
-"     set number
-"   else
-"     set relativenumber
-"   endif
-" endfunc
-" nnoremap <C-N> :call NumberToggle()<cr>
 
 " Clear highlighting by hitting return in normal mode
 nnoremap <CR> :noh<CR><CR>
 
-
 " remap keys
 inoremap jk <ESC>
 
+"""""""
 " RSpec.vim mappings
+"""""""
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
